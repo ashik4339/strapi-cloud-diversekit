@@ -37,6 +37,16 @@
     "profession": {
       "type": "string",
       "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "options": {
+        "lowercase": true,
+        "decamelize": false,
+        "separator": "-",
+        "length": 200
+      }
     }
   }
 }

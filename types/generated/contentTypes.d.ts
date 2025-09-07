@@ -376,6 +376,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
   collectionName: 'blogs';
   info: {
+    description: '';
     displayName: 'Blog';
     pluralName: 'blogs';
     singularName: 'blog';
@@ -394,6 +395,15 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     postDate: Schema.Attribute.Date & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     readingTime: Schema.Attribute.Integer;
+    slug: Schema.Attribute.UID<
+      'title',
+      {
+        decamelize: false;
+        length: 200;
+        lowercase: true;
+        separator: '-';
+      }
+    >;
     thumbnail: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
@@ -425,12 +435,59 @@ export interface ApiClientSiteClientSite extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<
+      'name',
+      {
+        decamelize: false;
+        length: 200;
+        lowercase: true;
+        separator: '-';
+      }
+    >;
     thumbnail: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ApiGlobalSettingGlobalSetting extends Struct.SingleTypeSchema {
+  collectionName: 'global-settings';
+  info: {
+    description: 'Global site settings including logo, contact info, social links, and navigation';
+    displayName: 'Global Settings';
+    pluralName: 'global-settings';
+    singularName: 'global-setting';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    address: Schema.Attribute.Text;
+    contactEmail: Schema.Attribute.Email;
+    contactPhone: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    favicon: Schema.Attribute.Media<'images'>;
+    footerText: Schema.Attribute.RichText;
+    googleAnalyticsId: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::global-setting.global-setting'
+    > &
+      Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    siteDescription: Schema.Attribute.Text;
+    siteName: Schema.Attribute.String & Schema.Attribute.Required;
+    socialLinks: Schema.Attribute.JSON;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -456,6 +513,15 @@ export interface ApiHeroSliderHeroSlider extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<
+      'name',
+      {
+        decamelize: false;
+        length: 200;
+        lowercase: true;
+        separator: '-';
+      }
+    >;
     thumbnail: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -466,6 +532,7 @@ export interface ApiHeroSliderHeroSlider extends Struct.CollectionTypeSchema {
 export interface ApiTemplateTemplate extends Struct.CollectionTypeSchema {
   collectionName: 'templates';
   info: {
+    description: '';
     displayName: 'Template';
     pluralName: 'templates';
     singularName: 'template';
@@ -493,6 +560,15 @@ export interface ApiTemplateTemplate extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     sliderThumbnail: Schema.Attribute.Media<'images' | 'files', true> &
       Schema.Attribute.Required;
+    slug: Schema.Attribute.UID<
+      'name',
+      {
+        decamelize: false;
+        length: 200;
+        lowercase: true;
+        separator: '-';
+      }
+    >;
     tagLine: Schema.Attribute.String & Schema.Attribute.Required;
     thumbnail: Schema.Attribute.Media<'images' | 'files', true> &
       Schema.Attribute.Required;
@@ -528,6 +604,15 @@ export interface ApiTestimonialTestimonial extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String & Schema.Attribute.Required;
     profession: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<
+      'name',
+      {
+        decamelize: false;
+        length: 200;
+        lowercase: true;
+        separator: '-';
+      }
+    >;
     star: Schema.Attribute.Integer &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
@@ -1054,6 +1139,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::blog.blog': ApiBlogBlog;
       'api::client-site.client-site': ApiClientSiteClientSite;
+      'api::global-setting.global-setting': ApiGlobalSettingGlobalSetting;
       'api::hero-slider.hero-slider': ApiHeroSliderHeroSlider;
       'api::template.template': ApiTemplateTemplate;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;

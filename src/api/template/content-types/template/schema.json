@@ -4,7 +4,8 @@
   "info": {
     "singularName": "template",
     "pluralName": "templates",
-    "displayName": "Template"
+    "displayName": "Template",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -43,11 +44,13 @@
     },
     "previewLiveDemoURL": {
       "type": "string",
-      "required": true
+      "required": true,
+      "regex": "^https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)$"
     },
     "getThisTemplateURL": {
       "type": "string",
-      "required": true
+      "required": true,
+      "regex": "^https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)$"
     },
     "content": {
       "type": "blocks",
@@ -56,6 +59,16 @@
     "pageInclude": {
       "type": "blocks",
       "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "options": {
+        "lowercase": true,
+        "decamelize": false,
+        "separator": "-",
+        "length": 200
+      }
     }
   }
 }

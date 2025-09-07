@@ -22,6 +22,16 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "options": {
+        "lowercase": true,
+        "decamelize": false,
+        "separator": "-",
+        "length": 200
+      }
     }
   }
 }

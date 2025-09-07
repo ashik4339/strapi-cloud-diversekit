@@ -4,7 +4,8 @@
   "info": {
     "singularName": "blog",
     "pluralName": "blogs",
-    "displayName": "Blog"
+    "displayName": "Blog",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -34,6 +35,16 @@
     },
     "readingTime": {
       "type": "integer"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "options": {
+        "lowercase": true,
+        "decamelize": false,
+        "separator": "-",
+        "length": 200
+      }
     }
   }
 }
