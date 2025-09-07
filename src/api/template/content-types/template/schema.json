@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "templates",
+  "info": {
+    "singularName": "template",
+    "pluralName": "templates",
+    "displayName": "Template"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "numberForTemplatePosition": {
+      "type": "integer",
+      "unique": true
+    },
+    "tagLine": {
+      "type": "string",
+      "required": true
+    },
+    "sliderThumbnail": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "previewLiveDemoURL": {
+      "type": "string",
+      "required": true
+    },
+    "getThisTemplateURL": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "blocks",
+      "required": true
+    },
+    "pageInclude": {
+      "type": "blocks",
+      "required": true
+    }
+  }
+}
