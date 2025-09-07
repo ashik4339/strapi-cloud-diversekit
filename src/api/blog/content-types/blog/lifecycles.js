@@ -1,4 +1,5 @@
-const readingTime = require('reading-time').default;
+// @ts-ignore
+const readingTime = require('reading-time');
 
 module.exports = {
   async beforeCreate(event) {
