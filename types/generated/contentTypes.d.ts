@@ -547,6 +547,7 @@ export interface ApiTemplateTemplate extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     feature: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     getThisTemplateURL: Schema.Attribute.String & Schema.Attribute.Required;
+    isITBundle: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
