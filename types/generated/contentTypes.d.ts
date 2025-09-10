@@ -557,6 +557,7 @@ export interface ApiTemplateTemplate extends Struct.CollectionTypeSchema {
       Schema.Attribute.Unique;
     pageInclude: Schema.Attribute.Blocks & Schema.Attribute.Required;
     previewLiveDemoURL: Schema.Attribute.String & Schema.Attribute.Required;
+    price: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     sliderThumbnail: Schema.Attribute.Media<'images' | 'files', true> &
       Schema.Attribute.Required;
@@ -564,7 +565,6 @@ export interface ApiTemplateTemplate extends Struct.CollectionTypeSchema {
       'name',
       {
         decamelize: false;
-        length: 200;
         lowercase: true;
         separator: '-';
       }
