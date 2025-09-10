@@ -72,6 +72,10 @@
         "lowercase": true,
         "decamelize": false
       }
+    },
+    "feature": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
