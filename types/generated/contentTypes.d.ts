@@ -435,11 +435,11 @@ export interface ApiClientSiteClientSite extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    siteShowingOrder: Schema.Attribute.Integer;
     slug: Schema.Attribute.UID<
       'name',
       {
         decamelize: false;
-        length: 200;
         lowercase: true;
         separator: '-';
       }

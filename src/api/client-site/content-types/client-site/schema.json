@@ -33,11 +33,13 @@
       "type": "uid",
       "targetField": "name",
       "options": {
-        "lowercase": true,
-        "decamelize": false,
         "separator": "-",
-        "length": 200
+        "lowercase": true,
+        "decamelize": false
       }
+    },
+    "siteShowingOrder": {
+      "type": "integer"
     }
   }
 }
