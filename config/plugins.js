@@ -1,1 +1,7 @@
-module.exports = () => ({});
+module.exports = () => ({
+  upload: {
+    config: {
+      sizeLimit: 250 * 1024 * 1024, // 250mb in bytes
+    },
+  },
+});
